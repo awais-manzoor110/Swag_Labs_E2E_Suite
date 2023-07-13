@@ -16,14 +16,11 @@ def setup(request):
     # random browser selection through cmd
     browser_name = request.config.getoption('browser_name')
     if browser_name == "chrome":
-        service_obj = Service("D:/chromedriver.exe")
-        driver = webdriver.Chrome(service=service_obj)
+        driver = webdriver.Chrome()
     elif browser_name == "firefox":
-        service_obj = Service("D:/geckodriver.exe")
-        driver = webdriver.Firefox(service=service_obj)
-    elif browser_name == "IE":
-        service_obj = Service("D:/IEDriverServer.exe")
-        driver = webdriver.Ie(service=service_obj)
+        driver = webdriver.Firefox()
+    elif browser_name == "Edge":
+        driver = webdriver.Edge()
     driver.implicitly_wait(10)
     driver.get("https://www.saucedemo.com/")
     driver.maximize_window()
