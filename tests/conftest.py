@@ -15,8 +15,13 @@ def setup(request):
     global driver
     # random browser selection through cmd
     browser_name = request.config.getoption('browser_name')
+    chrome_options = Options()
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("start-maximized")
     if browser_name == "chrome":
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(options=chrome_options)
     elif browser_name == "firefox":
         driver = webdriver.Firefox()
     elif browser_name == "Edge":
